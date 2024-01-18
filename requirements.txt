@@ -1,0 +1,5 @@
+Flask
+Flask-WTF
+Flask-Cors
+Flask-MySQL
+flask_mysqldb

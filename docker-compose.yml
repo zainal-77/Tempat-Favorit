@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'tempat_favorit'
+      MYSQL_ROOT_PASSWORD: 'password'  # Ganti dengan kata sandi yang Anda inginkan
+    ports:
+      - '3306:3306'
+
+  web:
+    build: .
+    ports:
+      - '5000:5000'
+    depends_on:
+      - db
+    environment:
+      MYSQL_HOST: 'db'  # Sesuaikan dengan perubahan di aplikasi Flask
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'password'  # Sesuaikan dengan kata sandi yang sama yang digunakan pada MySQL
+      MYSQL_DB: 'tempat_favorit'
+

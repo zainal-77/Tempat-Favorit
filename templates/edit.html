@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Tempat Favorit</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Edit Tempat Favorit</h1>
+
+        <form action="{{ url_for('update_place', place_id=place[0]) }}" method="post" enctype="multipart/form-data">
+            <!-- Remove the CSRF token input field -->
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="place_id" value="{{ place[0] }}">
+            <div class="form-group">
+                <label for="name">Nama Tempat:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ place[1] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="latitude">Latitude:</label>
+                <input type="number" class="form-control" id="latitude" name="latitude" step="any" value="{{ place[2] }}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="longitude">Longitude:</label>
+                <input type="number" class="form-control" id="longitude" name="longitude" step="any" value="{{ place[3] }}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="photo">Foto (Opsional):</label>
+                <input type="file" class="form-control-file" id="photo" name="photo">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
